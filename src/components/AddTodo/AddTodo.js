@@ -53,26 +53,46 @@ const styles = theme => ({
 });
 
 class AddTodo extends React.Component {
+    state = {
+        newTodoText: '',
+    };
+
+    handleChange = (newTodoText) => {
+        this.setState({newTodoText})
+    };
 
     render() {
         const { classes } = this.props;
         return (
-            <div className={classes.root}>
-                <AppBar position="static">
-                    <Toolbar className={classes.toolbar}>
-                        <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+            <div
+                className={classes.root}
+            >
+                <AppBar
+                    position="static"
+                >
+                    <Toolbar
+                        className={classes.toolbar}
+                    >
+                        <Typography
+                            className={classes.title}
+                            variant="h6"
+                            color="inherit"
+                            noWrap
+                        >
                             TodoList
                         </Typography>
-                        <div className={classes.search}>
+                        <div
+                            className={classes.search}
+                        >
                             <InputBase
                                 placeholder="Dodaj…"
+                                onChange={event => this.handleChange(event.target.value)}
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
                                 }}
                             />
                         </div>
-                        <div className={classes.grow} />
                     </Toolbar>
                 </AppBar>
             </div>
