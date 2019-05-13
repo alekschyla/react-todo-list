@@ -53,13 +53,6 @@ const styles = theme => ({
 });
 
 class AddTodo extends React.Component {
-    state = {
-        newTodoText: '',
-    };
-
-    handleChange = (newTodoText) => {
-        this.setState({newTodoText})
-    };
 
     render() {
         const { classes } = this.props;
@@ -85,8 +78,9 @@ class AddTodo extends React.Component {
                             className={classes.search}
                         >
                             <InputBase
+                                value={this.props.text}
                                 placeholder="Dodaj…"
-                                onChange={event => this.handleChange(event.target.value)}
+                                onChange={event => this.props.handleChange(event.target.value)}
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
