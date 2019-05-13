@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import AddTodo from "../../components/AddTodo";
 import TodosList from "../../components/TodosList";
 
+const dashboardStyle = {
+    margin: '0 auto',
+    border: '1px solid black',
+};
+
 class Dashboard extends Component {
     state = {
         newTodoText: '',
@@ -30,7 +35,9 @@ class Dashboard extends Component {
                     handleChange={this.handleChange}
                     text={this.state.newTodoText}
                 />
-                <TodosList/>
+                <TodosList
+                todos={this.state.todos}
+                />
             </div>
         );
     }
