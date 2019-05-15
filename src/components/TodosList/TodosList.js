@@ -2,14 +2,23 @@ import React from 'react';
 
 import Checkbox from '@material-ui/core/Checkbox';
 
-const todoStyle = {
-    width: '50%',
-    margin: '0 auto',
-    padding: '10px',
-    borderBottom: '1px solid grey',
-};
-
 const TodosList = (props) => {
+    const todoStyle = {
+        width: '50%',
+        margin: '0 auto',
+        padding: '10px',
+        borderBottom: '1px solid grey',
+        textDecoration: 'none'
+    };
+
+    const checkedTodoStyle = {
+        width: '50%',
+        margin: '0 auto',
+        padding: '10px',
+        borderBottom: '1px solid grey',
+        textDecoration: 'line-through'
+    };
+
     return (
         <div>
             {
@@ -17,12 +26,13 @@ const TodosList = (props) => {
                     props.todos.map(
                         (todo, index) => (
                             <div
-                                style={todoStyle}
+                                style={todo.isCompleted ? checkedTodoStyle : todoStyle}
                                 key={todo+index}
                             >
                                 <Checkbox
                                     checked={todo.isCompleted}
-                                    onChange={() => props.handleChangeIsTodoCompleted(index)}
+                                    onChange={() => props.handleChangeIsTodoCompleted(index)
+                                    }
                                 />
                                 <span>{todo.text}</span>
                             </div>
@@ -32,5 +42,6 @@ const TodosList = (props) => {
         </div>
     );
 };
+
 
 export default TodosList;
