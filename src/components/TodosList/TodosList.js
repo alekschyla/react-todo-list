@@ -22,7 +22,7 @@ const TodosList = (props) => {
                             >
                                 <Checkbox
                                     checked={todo.isCompleted}
-                                    onChange={() => console.log(todo)}
+                                    onChange={() => props.handleChangeIsTodoCompleted(index)}
                                 />
                                 <span>{todo.text}</span>
                             </div>

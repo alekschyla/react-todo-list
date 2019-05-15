@@ -29,8 +29,9 @@ class Dashboard extends Component {
         }
     };
 
-    handleChangeIsTodoCompleted = (event) => {
-        
+    handleChangeIsTodoCompleted = (index) => {
+        this.state.todos[index].isCompleted = !this.state.todos[index].isCompleted;
+        this.forceUpdate();
     };
 
     render() {
