@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import AddTodo from "../../components/AddTodo";
 import TodosList from "../../components/TodosList";
 
@@ -6,7 +7,6 @@ import TodosList from "../../components/TodosList";
 class Dashboard extends Component {
     state = {
         newTodoText: '',
-        todos: [],
     };
 
     componentDidMount() {
@@ -50,4 +50,12 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = dispatch => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
