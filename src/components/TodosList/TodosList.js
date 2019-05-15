@@ -1,9 +1,11 @@
 import React from 'react';
 
+import Checkbox from '@material-ui/core/Checkbox';
+
 const todoStyle = {
     width: '50%',
     margin: '0 auto',
-    padding: '15px',
+    padding: '10px',
     borderBottom: '1px solid grey',
 };
 
@@ -18,7 +20,11 @@ const TodosList = (props) => {
                                 style={todoStyle}
                                 key={todo+index}
                             >
-                                {todo}
+                                <Checkbox
+                                    checked={todo.isCompleted}
+                                    onChange={() => console.log(todo)}
+                                />
+                                <span>{todo.text}</span>
                             </div>
                         )
                     )

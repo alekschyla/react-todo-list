@@ -80,7 +80,7 @@ class AddTodo extends React.Component {
                             <InputBase
                                 value={this.props.text}
                                 placeholder="Dodaj…"
-                                onChange={event => this.props.handleChange(event.target.value)}
+                                onChange={event => this.props.handleChangeTodoText(event.target.value)}
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
