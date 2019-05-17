@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import AddTodo from "../../components/AddTodo";
 import TodosList from "../../components/TodosList";
+import {addTodoActionCreator, toggleTodoActionCreator} from '../../state/todos';
+
 
 
 class Dashboard extends Component {
@@ -18,20 +20,10 @@ class Dashboard extends Component {
     };
 
     addTodo = (event) => {
-        const todo = {
-            text: this.state.newTodoText,
-            isCompleted: false,
-        };
-
         if (event.keyCode === 13) {
-            this.setState({todos: this.state.todos.concat(todo)});
-            this.setState({newTodoText: ''});
+            this.props._addTodo(this.state.newTodoText);
+            this.setState({newTodoText: ''})
         }
-    };
-
-    handleChangeIsTodoCompleted = (index) => {
-        this.state.todos[index].isCompleted = !this.state.todos[index].isCompleted;
-        this.forceUpdate();
     };
 
     render() {
@@ -42,8 +34,8 @@ class Dashboard extends Component {
                     text={this.state.newTodoText}
                 />
                 <TodosList
-                todos={this.state.todos}
-                handleChangeIsTodoCompleted={this.handleChangeIsTodoCompleted}
+                todos={this.props._todos}
+                toggleTodo={this.props._toggleTodo}
                 />
             </div>
         );
@@ -51,11 +43,12 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-
+    _todos: state.todos.todos,
 });
 
 const mapDispatchToProps = dispatch => ({
-
+    _addTodo: (text) => dispatch(addTodoActionCreator(text)),
+    _toggleTodo: (id) => dispatch(toggleTodoActionCreator(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
