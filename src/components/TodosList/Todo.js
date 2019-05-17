@@ -3,12 +3,12 @@ import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 
 
-const Todo = ({todo, onClick}) => {
+const Todo = ({todo, todos, index, onClick}) => {
     const todoStyle = {
         width: '50%',
         margin: '0 auto',
         padding: '10px',
-        borderBottom: '1px solid grey',
+        borderBottom: index !== todos.length - 1 ? '1px solid grey' : 'none',
         textDecoration: todo.isCompleted ? 'line-through' : 'none'
     };
 
