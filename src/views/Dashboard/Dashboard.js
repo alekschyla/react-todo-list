@@ -28,8 +28,9 @@ class Dashboard extends Component {
         return (
             <div>
                 <AddTodo
+
                     handleChangeTodoText={this.handleChangeTodoText}
-                    text={this.state.newTodoText}
+                    todoText={this.state.newTodoText}
                 />
                 <TodosList
                 todos={this.props._todos}
