@@ -4,8 +4,6 @@ import AddTodo from "../../components/AddTodo";
 import TodosList from "../../components/TodosList";
 import {addTodoActionCreator, toggleTodoActionCreator} from '../../state/todos';
 
-
-
 class Dashboard extends Component {
     state = {
         newTodoText: '',

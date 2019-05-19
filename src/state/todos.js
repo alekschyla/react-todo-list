@@ -3,13 +3,13 @@ const uuidv4 = require('uuid/v4');
 const ADD = 'todos/ADD_TODO';
 const TOGGLE_TODO = 'todos/TOGGLE_TODO';
 
-export const addTodoActionCreator = (text) => ({
+export const addTodoActionCreator = (todoText) => ({
     type: ADD,
-    text
+    todoText
 });
-export const toggleTodoActionCreator = id => ({
+export const toggleTodoActionCreator = todoId => ({
     type: TOGGLE_TODO,
-    id
+    todoId
 });
 
 const initialState = {
@@ -18,8 +18,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
     const newTodo = {
-        id: uuidv4(),
-        text: action.text,
+        todoId: uuidv4(),
+        todoText: action.todoText,
         isCompleted: false
     };
 
@@ -33,11 +33,7 @@ export default (state = initialState, action) => {
         case TOGGLE_TODO:
             return {
                 ...state,
-                todos: state.todos.map(todo =>
-                    (todo.id === action.id)
-                        ? {...todo, isCompleted: !todo.isCompleted}
-                        : todo
-                )
+                todos: state.todos.map(todo => (todo.todoId === action.todoId) ? {...todo, isCompleted: !todo.isCompleted} : todo)
             };
 
         default:

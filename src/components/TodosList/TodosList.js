@@ -14,8 +14,8 @@ const TodosList = (props) => {
                                 todo={todo}
                                 todos={props.todos}
                                 index={index}
-                                onClick={() => props.toggleTodo(todo.id)}
-                                key={todo.id}
+                                onClick={() => props.toggleTodo(todo.todoId)}
+                                key={todo.todoId}
                             />
                         )
                     )

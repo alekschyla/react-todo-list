@@ -20,7 +20,7 @@ const Todo = ({todo, todos, index, onClick}) => {
                 checked={todo.isCompleted}
                 onChange={onClick}
             />
-            <span>{todo.text}</span>
+            <span>{todo.todoText}</span>
         </div>
     );
 };

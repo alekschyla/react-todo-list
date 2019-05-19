@@ -78,7 +78,7 @@ class AddTodo extends React.Component {
                             className={classes.search}
                         >
                             <InputBase
-                                value={this.props.text}
+                                value={this.props.todoText}
                                 placeholder="Dodaj…"
                                 onChange={event => this.props.handleChangeTodoText(event.target.value)}
                                 classes={{
