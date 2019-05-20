@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import AddTodo from "../../components/AddTodo";
 import TodosList from "../../components/TodosList";
-import {addTodoActionCreator, toggleTodoActionCreator} from '../../state/todos';
+import {addTodoActionCreator, deleteTodoActionCreator, toggleTodoActionCreator} from '../../state/todos';
 
 class Dashboard extends Component {
     state = {
@@ -35,6 +35,7 @@ class Dashboard extends Component {
                 <TodosList
                 todos={this.props._todos}
                 toggleTodo={this.props._toggleTodo}
+                deleteTodo={this.props._deleteTodo}
                 />
             </div>
         );
@@ -47,7 +48,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     _addTodo: (text) => dispatch(addTodoActionCreator(text)),
-    _toggleTodo: (id) => dispatch(toggleTodoActionCreator(id))
+    _toggleTodo: (id) => dispatch(toggleTodoActionCreator(id)),
+    _deleteTodo: (id) => dispatch(deleteTodoActionCreator(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

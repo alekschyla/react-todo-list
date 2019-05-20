@@ -14,7 +14,8 @@ const TodosList = (props) => {
                                 todo={todo}
                                 todos={props.todos}
                                 index={index}
-                                onClick={() => props.toggleTodo(todo.todoId)}
+                                toggleTodo={() => props.toggleTodo(todo.todoId)}
+                                deleteTodo={() => props.deleteTodo(todo.todoId)}
                                 key={todo.todoId}
                             />
                         )

@@ -1,9 +1,11 @@
 import React from 'react';
 
 import Checkbox from '@material-ui/core/Checkbox';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
-const Todo = ({todo, todos, index, onClick}) => {
+const Todo = ({todo, todos, index, toggleTodo, deleteTodo}) => {
     const todoStyle = {
         width: '50%',
         margin: '0 auto',
@@ -18,9 +20,16 @@ const Todo = ({todo, todos, index, onClick}) => {
         >
             <Checkbox
                 checked={todo.isCompleted}
-                onChange={onClick}
+                onChange={toggleTodo}
             />
             <span>{todo.todoText}</span>
+            <IconButton
+                style={{float: 'right'}}
+                color="primary"
+                onClick={deleteTodo}
+            >
+                <DeleteIcon />
+            </IconButton>
         </div>
     );
 };
