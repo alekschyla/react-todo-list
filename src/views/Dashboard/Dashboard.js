@@ -32,6 +32,7 @@ class Dashboard extends Component {
                     handleChangeTodoText={this.handleChangeTodoText}
                     todoText={this.state.newTodoText}
                 />
+
                 <TodosList
                 todos={this.props._todos}
                 toggleTodo={this.props._toggleTodo}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Todo from "./Todo";
+import EmptyTodoList from "./EmptyTodoList";
 
 
 const TodosList = (props) => {
@@ -7,7 +8,7 @@ const TodosList = (props) => {
     return (
         <div>
             {
-                props.todos &&
+                props.todos.length !== 0 ?
                     props.todos.map(
                         (todo, index) => (
                             <Todo
@@ -20,6 +21,8 @@ const TodosList = (props) => {
                             />
                         )
                     )
+                    :
+                    <EmptyTodoList/>
             }
         </div>
     );
