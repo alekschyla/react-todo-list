@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import AddTodo from "../../components/AddTodo";
+import AppBar from "../../components/AppBar";
 import TodosList from "../../components/TodosList";
 import {addTodoActionCreator, deleteTodoActionCreator, toggleTodoActionCreator} from '../../state/todos';
+import AddTodo from "../../components/AddTodo";
 
 class Dashboard extends Component {
     state = {
@@ -27,16 +28,17 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                <AddTodo
-
-                    handleChangeTodoText={this.handleChangeTodoText}
-                    todoText={this.state.newTodoText}
-                />
+                <AppBar/>
 
                 <TodosList
                 todos={this.props._todos}
                 toggleTodo={this.props._toggleTodo}
                 deleteTodo={this.props._deleteTodo}
+                />
+
+                <AddTodo
+                    handleChangeTodoText={this.handleChangeTodoText}
+                    todoText={this.state.newTodoText}
                 />
             </div>
         );
