@@ -13,24 +13,39 @@ const Todo = ({todo, todos, index, toggleTodo, deleteTodo}) => {
         borderBottom: index !== todos.length - 1 ? '1px solid grey' : 'none',
         textDecoration: todo.isCompleted ? 'line-through' : 'none'
     };
+    const checkerAndButtonStyle = {
+        width: '20px',
+    };
 
     return (
-        <div
+        <table
             style={todoStyle}
         >
-            <Checkbox
-                checked={todo.isCompleted}
-                onChange={toggleTodo}
-            />
-            <span>{todo.todoText}</span>
-            <IconButton
-                style={{float: 'right'}}
-                color="primary"
-                onClick={deleteTodo}
-            >
-                <DeleteIcon />
-            </IconButton>
-        </div>
+            <tr>
+                <td
+                    style={checkerAndButtonStyle}
+                >
+                    <Checkbox
+                        checked={todo.isCompleted}
+                        onChange={toggleTodo}
+                    />
+                </td>
+                <td>
+                    <span>{todo.todoText}</span>
+                </td>
+                <td
+                style={checkerAndButtonStyle}
+                >
+                    <IconButton
+                        style={{float: 'right'}}
+                        color="primary"
+                        onClick={deleteTodo}
+                    >
+                        <DeleteIcon/>
+                    </IconButton>
+                </td>
+            </tr>
+        </table>
     );
 };
 
