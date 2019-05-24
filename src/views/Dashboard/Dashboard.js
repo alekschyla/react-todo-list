@@ -2,12 +2,16 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import AppBar from "../../components/AppBar";
 import TodosList from "../../components/TodosList";
-import {addTodoActionCreator, deleteTodoActionCreator, toggleTodoActionCreator} from '../../state/todos';
+import {addTodoActionCreator,
+    deleteTodoActionCreator,
+    toggleTodoActionCreator,
+    editTodoActionCreator} from '../../state/todos';
 import AddTodo from "../../components/AddTodo";
 
 class Dashboard extends Component {
     state = {
         newTodoText: '',
+        editTodoText: '',
     };
 
     componentDidMount() {
@@ -19,10 +23,15 @@ class Dashboard extends Component {
     };
 
     addTodo = (event) => {
-        if (event.keyCode === 13) {
+        const ENTER = 13;
+        if (event.keyCode === ENTER) {
             this.props._addTodo(this.state.newTodoText);
             this.setState({newTodoText: ''})
         }
+    };
+
+    editTodo = () => {
+
     };
 
     render() {
@@ -31,9 +40,10 @@ class Dashboard extends Component {
                 <AppBar/>
 
                 <TodosList
-                todos={this.props._todos}
-                toggleTodo={this.props._toggleTodo}
-                deleteTodo={this.props._deleteTodo}
+                    todos={this.props._todos}
+                    toggleTodo={this.props._toggleTodo}
+                    deleteTodo={this.props._deleteTodo}
+                    editTodoText={this.state.editTodoText}
                 />
 
                 <AddTodo
@@ -52,7 +62,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     _addTodo: (text) => dispatch(addTodoActionCreator(text)),
     _toggleTodo: (id) => dispatch(toggleTodoActionCreator(id)),
-    _deleteTodo: (id) => dispatch(deleteTodoActionCreator(id))
+    _deleteTodo: (id) => dispatch(deleteTodoActionCreator(id)),
+    _editTodo: (id, editTodoText) => dispatch(editTodoActionCreator(id, editTodoText))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -9,7 +9,7 @@ const Todo = ({todo, todos, index, toggleTodo, deleteTodo}) => {
     const todoStyle = {
         width: '50%',
         margin: '0 auto',
-        padding: '10px',
+        padding: '10px 0',
         borderBottom: index !== todos.length - 1 ? '1px solid grey' : 'none',
         textDecoration: todo.isCompleted ? 'line-through' : 'none'
     };
@@ -21,6 +21,7 @@ const Todo = ({todo, todos, index, toggleTodo, deleteTodo}) => {
         <table
             style={todoStyle}
         >
+            <tbody>
             <tr>
                 <td
                     style={checkerAndButtonStyle}
@@ -45,6 +46,7 @@ const Todo = ({todo, todos, index, toggleTodo, deleteTodo}) => {
                     </IconButton>
                 </td>
             </tr>
+            </tbody>
         </table>
     );
 };

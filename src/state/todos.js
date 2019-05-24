@@ -32,7 +32,8 @@ export default (state = initialState, action) => {
     const newTodo = {
         todoId: uuidv4(),
         todoText: action.todoText,
-        isCompleted: false
+        isCompleted: false,
+        isEditing: true,
     };
 
     switch (action.type) {
