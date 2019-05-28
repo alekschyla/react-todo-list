@@ -27,7 +27,7 @@ class Dashboard extends Component {
 
     addTodo = (event) => {
         const ENTER = 13;
-        if (event.keyCode === ENTER) {
+        if (event.keyCode === ENTER && this.state.newTodoText !== '') {
             this.props._addTodo(this.state.newTodoText);
             this.setState({newTodoText: ''})
         }
