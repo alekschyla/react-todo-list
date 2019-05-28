@@ -25,6 +25,7 @@ const Todo = (props) => {
             <Button
                 variant="contained"
                 color="primary"
+                onClick={props.editTodo}
             >
                 Zapisz
             </Button>

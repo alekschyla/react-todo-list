@@ -16,6 +16,7 @@ const TodosList = (props) => {
                                     editTodoText={props.editTodoText}
                                     todoText={todo.todoText}
                                     handleChangeEditTodoText={props.handleChangeEditTodoText}
+                                    editTodo={() => props.editTodo(todo.todoId, props.editTodoText)}
                                 />
                                 :
                                 <Todo

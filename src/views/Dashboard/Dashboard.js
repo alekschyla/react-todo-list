@@ -58,6 +58,7 @@ class Dashboard extends Component {
                     editTodoText={this.state.editTodoText}
                     clickTodo={this.clickTodo}
                     handleChangeEditTodoText={this.handleChangeEditTodoText}
+                    editTodo={this.props._editTodo}
                 />
 
                 <AddTodo

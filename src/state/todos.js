@@ -23,7 +23,7 @@ export const clickTodoActionCreator = todoId => ({
     todoId
 });
 export const editTodoActionCreator = (todoId, todoNewText) => ({
-    type: DELETE_TODO,
+    type: EDIT_TODO,
     todoId,
     todoNewText
 });
