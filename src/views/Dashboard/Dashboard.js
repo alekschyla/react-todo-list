@@ -7,7 +7,8 @@ import {
     deleteTodoActionCreator,
     toggleTodoActionCreator,
     clickTodoActionCreator,
-    editTodoActionCreator
+    editTodoActionCreator,
+    exitTodoActionCreator
 } from '../../state/todos';
 import AddTodo from "../../components/AddTodo";
 
@@ -42,10 +43,6 @@ class Dashboard extends Component {
         this.setState({editTodoText})
     };
 
-    editTodo = () => {
-
-    };
-
     render() {
         return (
             <div>
@@ -59,6 +56,7 @@ class Dashboard extends Component {
                     clickTodo={this.clickTodo}
                     handleChangeEditTodoText={this.handleChangeEditTodoText}
                     editTodo={this.props._editTodo}
+                    exitTodo={this.props._exitTodo}
                 />
 
                 <AddTodo
@@ -79,7 +77,9 @@ const mapDispatchToProps = dispatch => ({
     _toggleTodo: (id) => dispatch(toggleTodoActionCreator(id)),
     _deleteTodo: (id) => dispatch(deleteTodoActionCreator(id)),
     _clickTodo: (id) => dispatch(clickTodoActionCreator(id)),
-    _editTodo: (id, editTodoText) => dispatch(editTodoActionCreator(id, editTodoText))
+    _editTodo: (id, editTodoText) => dispatch(editTodoActionCreator(id, editTodoText)),
+    _exitTodo: (id) => dispatch(exitTodoActionCreator(id)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

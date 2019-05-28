@@ -5,6 +5,7 @@ const TOGGLE_TODO = 'todos/TOGGLE_TODO';
 const DELETE_TODO = 'todos/DELETE_TODO';
 const CLICK_TODO = 'todos/CLICK_TODO';
 const EDIT_TODO = 'todos/EDIT_TODO';
+const EXIT_TODO = 'todos/EXIT_TODO';
 
 export const addTodoActionCreator = (todoText) => ({
     type: ADD_TODO,
@@ -26,6 +27,10 @@ export const editTodoActionCreator = (todoId, todoNewText) => ({
     type: EDIT_TODO,
     todoId,
     todoNewText
+});
+export const exitTodoActionCreator = todoId => ({
+    type: EXIT_TODO,
+    todoId
 });
 
 const initialState = {
@@ -74,6 +79,12 @@ export default (state = initialState, action) => {
                         :
                         todo
                 )
+            };
+
+        case EXIT_TODO:
+            return {
+                ...state,
+                todos: state.todos.map(todo => (todo.todoId === action.todoId) ? {...todo, isEditing: false} : todo)
             };
 
         default:

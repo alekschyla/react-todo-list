@@ -2,6 +2,7 @@ import React from 'react';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 
 const Todo = (props) => {
     const divStyle = {
@@ -10,6 +11,9 @@ const Todo = (props) => {
     };
     const editTodoStyle = {
         width: '100%',
+    };
+    const linkStyle = {
+        marginLeft: '10px'
     };
 
     return (
@@ -29,6 +33,12 @@ const Todo = (props) => {
             >
                 Zapisz
             </Button>
+            <Link
+                style={linkStyle}
+                onClick={props.exitTodo}
+            >
+                Anuluj
+            </Link>
         </div>
     );
 };
