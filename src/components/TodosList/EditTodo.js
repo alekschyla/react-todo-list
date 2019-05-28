@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TextField from '@material-ui/core/TextField';
-
+import Button from '@material-ui/core/Button';
 
 const Todo = (props) => {
     const divStyle = {
@@ -18,11 +18,16 @@ const Todo = (props) => {
         >
             <TextField
                 style={editTodoStyle}
-                defaultValue={props.todoText}
                 value={props.editTodoText}
-                //onChange={event => this.props.handleChangeTodoText(event.target.value)}
+                onChange={event => props.handleChangeEditTodoText(event.target.value)}
                 margin="normal"
             />
+            <Button
+                variant="contained"
+                color="primary"
+            >
+                Zapisz
+            </Button>
         </div>
     );
 };

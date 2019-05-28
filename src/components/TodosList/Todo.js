@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
-const Todo = ({todo, todos, index, toggleTodo, deleteTodo}) => {
+const Todo = ({todo, todos, index, toggleTodo, deleteTodo, clickTodo}) => {
     const todoStyle = {
         width: '50%',
         margin: '0 auto',
@@ -31,7 +31,9 @@ const Todo = ({todo, todos, index, toggleTodo, deleteTodo}) => {
                         onChange={toggleTodo}
                     />
                 </td>
-                <td>
+                <td
+                    onClick={clickTodo}
+                >
                     <span>{todo.todoText}</span>
                 </td>
                 <td

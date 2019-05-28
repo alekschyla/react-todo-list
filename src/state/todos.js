@@ -3,6 +3,7 @@ const uuidv4 = require('uuid/v4');
 const ADD_TODO = 'todos/ADD_TODO';
 const TOGGLE_TODO = 'todos/TOGGLE_TODO';
 const DELETE_TODO = 'todos/DELETE_TODO';
+const CLICK_TODO = 'todos/CLICK_TODO';
 const EDIT_TODO = 'todos/EDIT_TODO';
 
 export const addTodoActionCreator = (todoText) => ({
@@ -17,7 +18,10 @@ export const deleteTodoActionCreator = todoId => ({
    type: DELETE_TODO,
    todoId
 });
-
+export const clickTodoActionCreator = todoId => ({
+    type: CLICK_TODO,
+    todoId
+});
 export const editTodoActionCreator = (todoId, todoNewText) => ({
     type: DELETE_TODO,
     todoId,
@@ -33,7 +37,7 @@ export default (state = initialState, action) => {
         todoId: uuidv4(),
         todoText: action.todoText,
         isCompleted: false,
-        isEditing: true,
+        isEditing: false,
     };
 
     switch (action.type) {
@@ -55,10 +59,21 @@ export default (state = initialState, action) => {
                 todos: state.todos.filter(todo => todo.todoId !== action.todoId)
             };
 
+        case CLICK_TODO:
+            return {
+                ...state,
+                todos: state.todos.map(todo => (todo.todoId === action.todoId) ? {...todo, isEditing: true} : todo)
+            };
+
         case EDIT_TODO:
             return {
                 ...state,
-                todos: state.todos.map(todo => (todo.todoId === action.todoId) ? {...todo, todoText: action.todoNewText} : todo)
+                todos: state.todos.map(
+                    todo => (todo.todoId === action.todoId) ?
+                        {...todo, todoText: action.todoNewText, isEditing: false}
+                        :
+                        todo
+                )
             };
 
         default:

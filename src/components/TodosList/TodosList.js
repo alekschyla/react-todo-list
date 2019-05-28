@@ -12,8 +12,10 @@ const TodosList = (props) => {
                         (todo, index) => (
                             todo.isEditing ?
                                 <EditTodo
+                                    key={todo.todoId}
                                     editTodoText={props.editTodoText}
                                     todoText={todo.todoText}
+                                    handleChangeEditTodoText={props.handleChangeEditTodoText}
                                 />
                                 :
                                 <Todo
@@ -22,6 +24,7 @@ const TodosList = (props) => {
                                     index={index}
                                     toggleTodo={() => props.toggleTodo(todo.todoId)}
                                     deleteTodo={() => props.deleteTodo(todo.todoId)}
+                                    clickTodo={() => props.clickTodo(todo.todoId, todo.todoText)}
                                     key={todo.todoId}
                                 />
                         )
