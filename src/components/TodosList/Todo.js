@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
-const Todo = ({todo, todos, index, toggleTodo, deleteTodo, clickTodo}) => {
+const Todo = ({todo, todos, index, toggleTodo, deleteTodo, clickTodo, isOneOfTodoIsEditing}) => {
     const todoStyle = {
         width: '50%',
         margin: '0 auto',
@@ -15,6 +15,12 @@ const Todo = ({todo, todos, index, toggleTodo, deleteTodo, clickTodo}) => {
     };
     const checkerAndButtonStyle = {
         width: '20px',
+    };
+
+    const clickTodoToEdit = () => {
+        if (!isOneOfTodoIsEditing) {
+            clickTodo();
+        }
     };
 
     return (
@@ -32,7 +38,7 @@ const Todo = ({todo, todos, index, toggleTodo, deleteTodo, clickTodo}) => {
                     />
                 </td>
                 <td
-                    onClick={clickTodo}
+                    onClick={clickTodoToEdit}
                 >
                     <span>{todo.todoText}</span>
                 </td>

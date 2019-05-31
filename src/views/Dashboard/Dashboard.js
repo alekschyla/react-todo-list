@@ -57,6 +57,7 @@ class Dashboard extends Component {
                     handleChangeEditTodoText={this.handleChangeEditTodoText}
                     editTodo={this.props._editTodo}
                     exitTodo={this.props._exitTodo}
+                    isOneOfTodoIsEditing={this.props._isOneOfTodoIsEditing}
                 />
 
                 <AddTodo
@@ -70,6 +71,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
     _todos: state.todos.todos,
+    _isOneOfTodoIsEditing: state.todos.isOneOfTodoIsEditing,
 });
 
 const mapDispatchToProps = dispatch => ({

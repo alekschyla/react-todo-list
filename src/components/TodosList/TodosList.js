@@ -28,6 +28,7 @@ const TodosList = (props) => {
                                     deleteTodo={() => props.deleteTodo(todo.todoId)}
                                     clickTodo={() => props.clickTodo(todo.todoId, todo.todoText)}
                                     key={todo.todoId}
+                                    isOneOfTodoIsEditing={props.isOneOfTodoIsEditing}
                                 />
                         )
                     )

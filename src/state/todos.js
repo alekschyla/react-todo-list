@@ -35,6 +35,7 @@ export const exitTodoActionCreator = todoId => ({
 
 const initialState = {
     todos: [],
+    isOneOfTodoIsEditing: false,
 };
 
 export default (state = initialState, action) => {
@@ -67,12 +68,14 @@ export default (state = initialState, action) => {
         case CLICK_TODO:
             return {
                 ...state,
+                isOneOfTodoIsEditing: true,
                 todos: state.todos.map(todo => (todo.todoId === action.todoId) ? {...todo, isEditing: true} : todo)
             };
 
         case EDIT_TODO:
             return {
                 ...state,
+                isOneOfTodoIsEditing: false,
                 todos: state.todos.map(
                     todo => (todo.todoId === action.todoId) ?
                         {...todo, todoText: action.todoNewText, isEditing: false}
@@ -84,6 +87,7 @@ export default (state = initialState, action) => {
         case EXIT_TODO:
             return {
                 ...state,
+                isOneOfTodoIsEditing: false,
                 todos: state.todos.map(todo => (todo.todoId === action.todoId) ? {...todo, isEditing: false} : todo)
             };
 
